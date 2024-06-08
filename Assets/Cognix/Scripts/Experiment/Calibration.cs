@@ -11,7 +11,7 @@ namespace Cognix.Validation
         public bool playOnAwake;
         [Header("Trial Settings")]
         public int numTrials = 20;
-        public Vector3 timeBetweenTrials = new Vector3(1.5f, 3.5f);
+        public Vector2 timeBetweenTrials = new Vector2(1.5f, 3.5f);
         public float waitBeforeTrial = 3;
         public Image crossImage;
         public Trial leftTrial;
