@@ -63,6 +63,8 @@ namespace Cognix.Validation
                     trial.Show();
                     yield return frameWaiter;
                     markerOutlet.WriteMarker(trial.markerName);
+                    yield return new WaitForSeconds(trial.trialDuration);
+                    trial.Hide();
                     currentTrialNum += 1;
                 }
 

@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 129733979}
   - component: {fileID: 129733981}
   - component: {fileID: 129733980}
+  - component: {fileID: 129733982}
   m_Layer: 5
   m_Name: Left
   m_TagString: Untagged
@@ -198,6 +199,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129733978}
   m_CullTransparentMesh: 1
+--- !u!114 &129733982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129733978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c54bbf0756b864429985b9d8a956813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 129733980}
+  markerName: left
+  trialDuration: 5
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,6 +1063,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1925832136}
+  - component: {fileID: 1925832137}
   m_Layer: 5
   m_Name: Calibration Elements
   m_TagString: Untagged
@@ -1076,6 +1093,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1925832137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925832135}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08bac6c59d9d77242b534f9ad014cfe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnAwake: 1
+  numTrials: 6
+  timeBetweenTrials: {x: 1.5, y: 3.5, z: 0}
+  waitBeforeTrial: 3
+  crossImage: {fileID: 726283461}
+  leftTrial: {fileID: 129733982}
+  rightTrial: {fileID: 2093329295}
+  markerOutlet: {fileID: 827521345}
 --- !u!1 &2093329291
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,6 +1124,7 @@ GameObject:
   - component: {fileID: 2093329292}
   - component: {fileID: 2093329294}
   - component: {fileID: 2093329293}
+  - component: {fileID: 2093329295}
   m_Layer: 5
   m_Name: Right
   m_TagString: Untagged
@@ -1151,6 +1189,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2093329291}
   m_CullTransparentMesh: 1
+--- !u!114 &2093329295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093329291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c54bbf0756b864429985b9d8a956813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 2093329293}
+  markerName: right
+  trialDuration: 5
 --- !u!1 &2128214367
 GameObject:
   m_ObjectHideFlags: 0
