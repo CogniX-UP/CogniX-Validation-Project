@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experiment: {fileID: 183658397}
-  timeToSelect: 1
+  timeToSelect: 0.5
   rect: {fileID: 796087906}
 --- !u!1 &325195723
 GameObject:

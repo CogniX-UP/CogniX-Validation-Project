@@ -40,7 +40,8 @@ namespace Cognix.Validation
             var indX = Mathf.FloorToInt(pieces.GetLength(0) * x);
             var indY = Mathf.FloorToInt(pieces.GetLength(1) * y);
 
-            return state[indX, indY];
+            // Reversed
+            return state[indY, indX];
         }
         public bool IsPuzzleCorrect()
         {

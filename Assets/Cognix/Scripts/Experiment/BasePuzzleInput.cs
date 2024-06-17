@@ -15,13 +15,22 @@ namespace Cognix.Validation
         public abstract Vector2 Point { get; }
         public abstract Puzzle.Direction Direction { get; }
 
+        PuzzlePiece hovering = null;
+
         protected void Update()
         {
+            UpdateSelection();
+            UpdateSwap();
+        }
+        private void UpdateSelection()
+        {
             var eState = experiment.PuzzleState;
-            if (eState == PuzzleExperiment.State.Off || eState == PuzzleExperiment.State.Move)
+            switch (eState)
             {
-                currentTime = 0;
-                return;
+                case PuzzleExperiment.State.Off:
+                case PuzzleExperiment.State.Move:
+                    currentTime = 0;
+                    return;
             }
 
             var point = Point;
@@ -32,12 +41,39 @@ namespace Cognix.Validation
                 return;
             }
 
+            var hovering = experiment.Puzzle.PieceByNormPos(point);
+            if (hovering != this.hovering)
+            {
+                this.hovering = hovering;
+                currentTime = Time.deltaTime;
+                return;
+            }
+
             currentTime += Time.deltaTime;
             if (currentTime > timeToSelect)
             {
-                experiment.SelectPieceByPos(point);
+                experiment.SelectPiece(this.hovering);
                 currentTime = 0;
             }
+        }
+        private void UpdateSwap()
+        {
+            var eState = experiment.PuzzleState;
+            switch (eState)
+            {
+                case PuzzleExperiment.State.Off:
+                case PuzzleExperiment.State.Move:
+                    return;
+            }
+
+            if (experiment.Selected == null)
+                return;
+
+            var dir = Direction;
+            if (dir == Puzzle.Direction.None)
+                return;
+
+            experiment.MoveSelected(dir);
         }
     }
 }

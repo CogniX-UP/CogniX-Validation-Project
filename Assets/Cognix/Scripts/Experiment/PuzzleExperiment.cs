@@ -24,6 +24,7 @@ namespace Cognix.Validation
 
         public State PuzzleState { get; private set; } = State.Off;
         public PuzzlePiece Selected => selectedPiece;
+        public Puzzle Puzzle => puzzle;
         private void Awake()
         {
             // No sanity checking for now.. or ever
@@ -35,7 +36,7 @@ namespace Cognix.Validation
             {
                 for (int j = 0; j < cols; j++)
                 {
-                    pieces[i, j] = initPieces[j].row[i];
+                    pieces[i, j] = initPieces[i].row[j];
                 }
             }
             puzzle.Pieces = pieces;
@@ -48,6 +49,19 @@ namespace Cognix.Validation
             PuzzleState = State.Select;
         }
 
+        public void MoveSelected(Puzzle.Direction dir)
+        {
+            PuzzleState = State.Move;
+            IEnumerator move()
+            {
+                yield return puzzle.MovePiece(selectedPiece, dir);
+                SelectPiece(null);
+                if (puzzle.IsPuzzleCorrect())
+                    Debug.Log("FINISHED");
+                PuzzleState = State.Select;
+            }
+            StartCoroutine(move());
+        }
         // Selects a piece by a normalized position
         // (0,0) => top left
         // (1, 1) => bottom right
