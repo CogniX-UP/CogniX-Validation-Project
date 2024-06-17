@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Cognix.Validation
 {
@@ -19,6 +20,10 @@ namespace Cognix.Validation
         [SerializeField] Puzzle puzzle;
         [SerializeField] BasePuzzleInput input;
         [SerializeField] List<PuzzleRow> initPieces = new List<PuzzleRow>();
+        [SerializeField] float winWaitTime = 1f;
+        [SerializeField] GameObject winPanel;
+
+        [SerializeField] UnityEvent onGameEnd;
 
         PuzzlePiece selectedPiece;
 
@@ -27,6 +32,7 @@ namespace Cognix.Validation
         public Puzzle Puzzle => puzzle;
         private void Awake()
         {
+            winPanel.SetActive(false);
             // No sanity checking for now.. or ever
             var cols = initPieces.Count;
             var rows = initPieces[0].row.Count;
@@ -42,8 +48,7 @@ namespace Cognix.Validation
             puzzle.Pieces = pieces;
         }
 
-        [ContextMenu("Test Begin")]
-        private void TestBeginGame()
+        public void BeginGame()
         {
             StartCoroutine(puzzle.BeginGame(null));
             PuzzleState = State.Select;
@@ -57,8 +62,16 @@ namespace Cognix.Validation
                 yield return puzzle.MovePiece(selectedPiece, dir);
                 SelectPiece(null);
                 if (puzzle.IsPuzzleCorrect())
-                    Debug.Log("FINISHED");
-                PuzzleState = State.Select;
+                {
+                    winPanel.SetActive(true);
+                    yield return new WaitForSeconds(winWaitTime);
+                    onGameEnd?.Invoke();
+                    winPanel.SetActive(false);
+                    gameObject.SetActive(false);
+                    PuzzleState = State.Off;
+                }
+                else
+                    PuzzleState = State.Select;
             }
             StartCoroutine(move());
         }
