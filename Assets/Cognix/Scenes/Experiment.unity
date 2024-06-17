@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 183658395}
   - component: {fileID: 183658397}
   - component: {fileID: 183658396}
+  - component: {fileID: 183658398}
   m_Layer: 5
   m_Name: Puzzle
   m_TagString: Untagged
@@ -340,6 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2180c5b6e53a749438864fcb9caa88b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Transition>k__BackingField: 1.25
 --- !u!114 &183658397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +354,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed067acb687b4946aef0f473fc449e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzle: {fileID: 183658396}
+  input: {fileID: 183658398}
   initPieces:
   - row:
     - {fileID: 1436777549}
@@ -359,7 +363,21 @@ MonoBehaviour:
   - row:
     - {fileID: 1565801720}
     - {fileID: 1318861174}
-  puzzle: {fileID: 183658396}
+--- !u!114 &183658398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183658394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc93c2f3809ad8642ba365524bf1033f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experiment: {fileID: 183658397}
+  timeToSelect: 1
+  rect: {fileID: 796087906}
 --- !u!1 &325195723
 GameObject:
   m_ObjectHideFlags: 0
