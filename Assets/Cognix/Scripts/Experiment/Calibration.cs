@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,7 @@ namespace Cognix.Validation
         [Header("LSL")]
         public MarkerOutlet markerOutlet;
 
+        public Action onCalibEnd;
         WaitForSeconds beforeTrialWaiter;
         Dictionary<Trial, int> remainingTrials = new Dictionary<Trial, int>();
         WaitForEndOfFrame frameWaiter = new WaitForEndOfFrame();
@@ -28,6 +30,11 @@ namespace Cognix.Validation
         {
             if (playOnAwake)
                 StartCoroutine(BeginTrial());
+        }
+        public void StartCalibration()
+        {
+            gameObject.SetActive(true);
+            StartCoroutine(BeginTrial());
         }
         public IEnumerator BeginTrial() => BeginTrial(numTrials);
         public IEnumerator BeginTrial(int numTrials)
@@ -51,7 +58,7 @@ namespace Cognix.Validation
                 while (currentTrialNum < numTrials)
                 {
                     // Wait for a random amount of time
-                    float waitTime = Random.Range(timeBetweenTrials.x, timeBetweenTrials.y);
+                    float waitTime = UnityEngine.Random.Range(timeBetweenTrials.x, timeBetweenTrials.y);
                     yield return new WaitForSeconds(waitTime);
 
                     // Show cross and wait x seconds
@@ -69,6 +76,7 @@ namespace Cognix.Validation
                 }
 
                 EndTrial();
+                onCalibEnd?.Invoke();
             }
 
             return beginTrial();
@@ -88,7 +96,7 @@ namespace Cognix.Validation
 
             if (remainingLeft > 0 && remainingRight > 0)
             {
-                int trial = Random.Range(0, 2);
+                int trial = UnityEngine.Random.Range(0, 2);
                 // Left
                 if (trial == 0)
                 {

@@ -23,7 +23,7 @@ namespace Cognix.Validation
         [SerializeField] float winWaitTime = 1f;
         [SerializeField] GameObject winPanel;
 
-        [SerializeField] UnityEvent onGameEnd;
+        public UnityEvent onGameEnd;
 
         PuzzlePiece selectedPiece;
 
