@@ -18,7 +18,6 @@ namespace Cognix.Validation
         }
 
         [SerializeField] Puzzle puzzle;
-        [SerializeField] BasePuzzleInput input;
         [SerializeField] List<PuzzleRow> initPieces = new List<PuzzleRow>();
         [SerializeField] float winWaitTime = 1f;
         [SerializeField] GameObject winPanel;

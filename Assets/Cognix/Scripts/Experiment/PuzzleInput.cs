@@ -4,16 +4,18 @@ using UnityEngine;
 
 namespace Cognix.Validation
 {
-    public abstract class BasePuzzleInput : MonoBehaviour
+    public class PuzzleInput : MonoBehaviour
     {
         [SerializeField]
         protected PuzzleExperiment experiment;
         [SerializeField]
-        float timeToSelect = 1f;
+        float timeToSelect = 0.5f;
+        [SerializeField]
+        PuzzlePointer pointer;
+        [SerializeField]
+        PuzzleDirectionInput directionInput;
 
         private float currentTime = 0;
-        public abstract Vector2 Point { get; }
-        public abstract Puzzle.Direction Direction { get; }
 
         PuzzlePiece hovering = null;
 
@@ -33,7 +35,7 @@ namespace Cognix.Validation
                     return;
             }
 
-            var point = Point;
+            var point = pointer.Point;
             if (point.x < 0 || point.x > 1 || point.y < 0 || point.y > 1)
             {
                 currentTime = 0;
@@ -69,7 +71,7 @@ namespace Cognix.Validation
             if (experiment.Selected == null)
                 return;
 
-            var dir = Direction;
+            var dir = directionInput.Direction;
             if (dir == Puzzle.Direction.None)
                 return;
 
