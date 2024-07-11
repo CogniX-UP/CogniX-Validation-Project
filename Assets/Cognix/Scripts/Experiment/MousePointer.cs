@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Cognix.Validation
 {
-    public class MouseKeyboardInput : PuzzlePointer
+    public class MousePointer : PuzzlePointer
     {
         [SerializeField] RectTransform rect;
 

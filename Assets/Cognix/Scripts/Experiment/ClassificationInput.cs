@@ -8,30 +8,33 @@ namespace Cognix.Validation
     public class ClassificationInput : PuzzleDirectionInput
     {
         [SerializeField] ClassificationInlet classInlet;
-        [SerializeField] Image leftProbIm, rightProbIm;
+        [SerializeField] Image horizontalProbIm, verticalProbIm;
         [SerializeField] float probThreshold = 0.65f;
+
+        private float HorizontalProb => classInlet.rightProbability;
+        private float VerticalProb => classInlet.leftProbability;
         public override Puzzle.Direction Direction
         {
             get
             {
-                var leftProb = classInlet.leftProbability;
-                var rightProb = classInlet.rightProbability;
+                var horProb = HorizontalProb;
+                var verProb = VerticalProb;
 
-                if (leftProb >= probThreshold)
-                    return Puzzle.Direction.Left;
-                else if (rightProb >= probThreshold)
+                if (horProb >= probThreshold)
                     return Puzzle.Direction.Right;
+                else if (verProb >= probThreshold)
+                    return Puzzle.Direction.Down;
                 else
                     return Puzzle.Direction.None;
             }
         }
         public void Update()
         {
-            var leftProb = classInlet.leftProbability;
-            var rightProb = classInlet.rightProbability;
+            var leftProb = HorizontalProb;
+            var rightProb = VerticalProb;
 
-            leftProbIm.fillAmount = leftProb;
-            rightProbIm.fillAmount = rightProb;
+            horizontalProbIm.fillAmount = leftProb;
+            verticalProbIm.fillAmount = rightProb;
         }
     }
 }

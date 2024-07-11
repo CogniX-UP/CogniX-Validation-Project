@@ -306,7 +306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &183658395
 RectTransform:
   m_ObjectHideFlags: 0
@@ -802,8 +802,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   classInlet: {fileID: 615529019}
-  leftProbIm: {fileID: 993046925}
-  rightProbIm: {fileID: 466292441}
+  horizontalProbIm: {fileID: 993046925}
+  verticalProbIm: {fileID: 466292441}
   probThreshold: 0.65
 --- !u!1 &410087039
 GameObject:
@@ -935,7 +935,7 @@ GameObject:
   - component: {fileID: 466292442}
   - component: {fileID: 466292441}
   m_Layer: 5
-  m_Name: Right Prob
+  m_Name: Ver Prob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1217,7 +1217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 305014ee9a70bba4baac5a2b592faa40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StreamName: classes
+  StreamName: probas
   StreamType: 
   moment: 0
   ProcessLastInChunkOnly: 0
@@ -1696,7 +1696,7 @@ GameObject:
   - component: {fileID: 993046926}
   - component: {fileID: 993046925}
   m_Layer: 5
-  m_Name: Left Prob
+  m_Name: Hor Prob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
