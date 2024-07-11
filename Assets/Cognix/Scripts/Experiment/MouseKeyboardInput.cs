@@ -18,7 +18,7 @@ namespace Cognix.Validation
             get
             {
                 var mouse = Input.mousePosition;
-                var isIn =  RectTransformUtility.ScreenPointToLocalPointInRectangle(rect, mouse, cam, out var localPoint);
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(rect, mouse, cam, out var localPoint);
                 // We're assuming the pivot is in the center, if it isn't, it should be changed in the editor
                 var r = rect.rect;
                 // Transforming the local point to (-0.5, 0.5) => (0, 0)

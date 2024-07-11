@@ -299,7 +299,6 @@ GameObject:
   - component: {fileID: 183658395}
   - component: {fileID: 183658397}
   - component: {fileID: 183658396}
-  - component: {fileID: 183658398}
   m_Layer: 5
   m_Name: Puzzle
   m_TagString: Untagged
@@ -321,6 +320,7 @@ RectTransform:
   m_Children:
   - {fileID: 1791802133}
   - {fileID: 796087906}
+  - {fileID: 1092524574}
   m_Father: {fileID: 1868752893}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 183658396}
-  input: {fileID: 183658398}
+  input: {fileID: 1999237950}
   initPieces:
   - row:
     - {fileID: 1436777549}
@@ -367,21 +367,6 @@ MonoBehaviour:
   onGameEnd:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &183658398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183658394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc93c2f3809ad8642ba365524bf1033f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  experiment: {fileID: 183658397}
-  timeToSelect: 0.5
-  rect: {fileID: 796087906}
 --- !u!1 &325195723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,7 +1039,7 @@ GameObject:
   - component: {fileID: 643281200}
   - component: {fileID: 643281201}
   m_Layer: 0
-  m_Name: Eye Gaze Inlet
+  m_Name: Eye Gaze World Inlet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1090,12 +1075,13 @@ MonoBehaviour:
   StreamName: pupil_capture
   StreamType: Gaze
   moment: 0
-  ProcessLastInChunkOnly: 0
-  resolver: {fileID: 0}
+  ProcessLastInChunkOnly: 1
+  resolver: {fileID: 1552212932}
   irregSamplingRate: 512
   channelMap:
     channelNames: []
   confidenceMargin: 0
+  debug: 0
 --- !u!1 &726283459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,6 +1431,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &976535305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 976535306}
+  - component: {fileID: 976535307}
+  m_Layer: 0
+  m_Name: Eye Gaze Surface Inlet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &976535306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976535305}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -545.6985, y: -402.67633, z: -123.212036}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1465310329}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &976535307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976535305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76574c5958dd0f04b8ff66c5ca797bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StreamName: pupil_capture_surface
+  StreamType: Gaze
+  moment: 0
+  ProcessLastInChunkOnly: 1
+  resolver: {fileID: 1552212932}
+  irregSamplingRate: 512
+  channelMap:
+    channelNames: []
+  confidenceMargin: 0
+  debug: 0
 --- !u!1 &1040680441
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,6 +1560,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040680441}
   m_CullTransparentMesh: 1
+--- !u!1 &1092524573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1092524574}
+  m_Layer: 5
+  m_Name: Inputs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1092524574
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092524573}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1305468567}
+  - {fileID: 1999237949}
+  m_Father: {fileID: 183658395}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1260648234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,6 +1806,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1293324142}
   m_CullTransparentMesh: 1
+--- !u!1 &1305468566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1305468567}
+  - component: {fileID: 1305468568}
+  m_Layer: 5
+  m_Name: Mouse Keyboard Input
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1305468567
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305468566}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1092524574}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1305468568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305468566}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc93c2f3809ad8642ba365524bf1033f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experiment: {fileID: 183658397}
+  timeToSelect: 0.5
+  rect: {fileID: 796087906}
 --- !u!1001 &1318861172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1918,6 +2046,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 643281200}
+  - {fileID: 976535306}
   - {fileID: 2128214369}
   m_Father: {fileID: 1552212933}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2771,6 +2900,62 @@ MonoBehaviour:
   leftTrial: {fileID: 129733982}
   rightTrial: {fileID: 2093329295}
   markerOutlet: {fileID: 827521345}
+--- !u!1 &1999237948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1999237949}
+  - component: {fileID: 1999237950}
+  m_Layer: 5
+  m_Name: Eye Gaze Input
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1999237949
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999237948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1092524574}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1999237950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999237948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f96fa6357b4b30141960115613436beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experiment: {fileID: 183658397}
+  timeToSelect: 0.5
+  rect: {fileID: 0}
+  eyeInlet: {fileID: 976535307}
+  dir: {x: 1, y: -1}
+  surfToUnityOffset: {x: 0, y: -1}
+  inletPos: {x: 0, y: 0}
+  lastPosition: {x: 0, y: 0}
 --- !u!1 &2003790148
 GameObject:
   m_ObjectHideFlags: 0
@@ -3029,11 +3214,12 @@ MonoBehaviour:
   StreamType: EEG
   moment: 0
   ProcessLastInChunkOnly: 0
-  resolver: {fileID: 0}
+  resolver: {fileID: 1552212932}
   irregSamplingRate: 128
   channelMap:
     channelNames: []
   confidenceMargin: 0
+  debug: 0
 --- !u!4 &2128214369
 Transform:
   m_ObjectHideFlags: 0

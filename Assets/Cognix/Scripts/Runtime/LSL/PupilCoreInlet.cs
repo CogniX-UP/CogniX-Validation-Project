@@ -14,11 +14,18 @@ namespace Cognix.LSL
         [Range(0, 1)]
         public float confidenceMargin = 0;
         public event Action<GazePosition> onGazePosition;
+        [SerializeField] bool debug;
+
         protected override void Process(float[] newSample, double timestamp)
         {
             var conf = SampleChannel("confidence", newSample);
             if (conf < confidenceMargin)
+            {
+                if (debug)
+                    Debug.Log($"Low Confidence: {confidenceMargin}", this);
                 return;
+            }
+                
             var gaze = new GazePosition
             {
                 confidence = conf,
@@ -28,6 +35,11 @@ namespace Cognix.LSL
                     y = SampleChannel("norm_pos_y", newSample),
                 }
             };
+
+            if (debug)
+            {
+                Debug.Log($"Gaze: {gaze}", this);
+            }
 
             onGazePosition?.Invoke(gaze);
         }
