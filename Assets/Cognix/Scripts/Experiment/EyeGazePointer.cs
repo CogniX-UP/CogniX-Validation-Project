@@ -25,7 +25,9 @@ namespace Cognix.Validation
                 {
                     var inletPos = gazeQueue.Dequeue().pos;
                     lastPosition = Vector2.Scale(inletPos + surfToUnityOffset, dir);
+                    return lastPosition;
                 }
+
                 return lastPosition;
             }
         }

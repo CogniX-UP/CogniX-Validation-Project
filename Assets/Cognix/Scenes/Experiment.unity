@@ -381,7 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   experiment: {fileID: 183658397}
   timeToSelect: 0.5
-  pointer: {fileID: 1305468568}
+  pointer: {fileID: 1999237950}
   directionInput: {fileID: 383534104}
 --- !u!1 &325195723
 GameObject:
