@@ -802,9 +802,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   classInlet: {fileID: 615529019}
-  horizontalProbIm: {fileID: 993046925}
-  verticalProbIm: {fileID: 466292441}
-  probThreshold: 0.9
+  horizontalProbIm: {fileID: 466292441}
+  verticalProbIm: {fileID: 993046925}
+  singleThreshold: 1
+  horizontalThreshold: 0.9
+  verticalThreshold: 0.9
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,7 +937,7 @@ GameObject:
   - component: {fileID: 466292442}
   - component: {fileID: 466292441}
   m_Layer: 5
-  m_Name: Ver Prob
+  m_Name: Hor Prob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1220,7 +1222,7 @@ MonoBehaviour:
   StreamName: probas
   StreamType: 
   moment: 0
-  ProcessLastInChunkOnly: 0
+  ProcessLastInChunkOnly: 1
   resolver: {fileID: 1552212932}
   irregSamplingRate: 256
   channelMap:
@@ -1696,7 +1698,7 @@ GameObject:
   - component: {fileID: 993046926}
   - component: {fileID: 993046925}
   m_Layer: 5
-  m_Name: Hor Prob
+  m_Name: Ver Prob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3215,7 +3217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playOnAwake: 0
-  numTrials: 10
+  numTrials: 40
   timeBetweenTrials: {x: 1.5, y: 3.5}
   waitBeforeTrial: 3
   crossImage: {fileID: 726283461}
